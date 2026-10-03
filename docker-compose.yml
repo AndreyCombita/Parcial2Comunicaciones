@@ -51,7 +51,7 @@ services:
       database:
         condition: service_healthy
 
- jupyter:
+  jupyter:
     image: jupyter/base-notebook:latest
     container_name: jupyter
     restart: always
