@@ -51,11 +51,12 @@ services:
       database:
         condition: service_healthy
 
-  jupyter:
+ jupyter:
     image: jupyter/base-notebook:latest
     container_name: jupyter
     restart: always
-    command: start-notebook.sh --NotebookApp.token='' --NotebookApp.base_url='/jupyter'
+    command: >
+      bash -c "pip install --quiet --no-cache-dir psycopg2-binary && start-notebook.sh --NotebookApp.token='' --NotebookApp.base_url='/jupyter'"
     environment:
       JUPYTER_ENABLE_LAB: "yes"
     networks:
